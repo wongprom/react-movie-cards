@@ -21,6 +21,7 @@ export const AddMovie = ({ setNewMovie }: IAddMovieProps) => {
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
     setNewMovie(newMovie);
+    handlerFormReset();
   };
 
   const handlerTitleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
