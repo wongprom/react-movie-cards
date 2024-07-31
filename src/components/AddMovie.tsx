@@ -1,7 +1,11 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { IMovie } from '../interfaces';
 
-const AddMovie = () => {
+interface IAddMovieProps {
+  setNewMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
+}
+
+const AddMovie = ({ setNewMovie }: IAddMovieProps) => {
   const [title, setTitle] = useState<string>('');
   const [rating, setRating] = useState<string>('');
   const [genre, setGenre] = useState<string>('');
@@ -16,6 +20,7 @@ const AddMovie = () => {
       description,
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
+    setNewMovie(newMovie);
   };
 
   const handlerTitleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
