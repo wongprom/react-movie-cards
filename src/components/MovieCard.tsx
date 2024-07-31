@@ -4,7 +4,7 @@ interface IMovieCardProps {
   movie: IMovie;
 }
 
-const MovieCard = ({ movie }: IMovieCardProps) => {
+export const MovieCard = ({ movie }: IMovieCardProps) => {
   return (
     <li>
       <div>
@@ -22,5 +22,3 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
     </li>
   );
 };
-
-export default MovieCard;

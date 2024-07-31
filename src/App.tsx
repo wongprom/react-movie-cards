@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import AddMovie from './components/AddMovie';
-import MovieCard from './components/MovieCard';
+import { AddMovie, MovieCard } from './components';
 import { IMovie } from './interfaces';
 import './App.css';
 
