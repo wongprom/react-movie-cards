@@ -1,4 +1,5 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { IMovie } from '../interfaces';
 
 const AddMovie = () => {
   const [title, setTitle] = useState<string>('');
@@ -8,10 +9,13 @@ const AddMovie = () => {
 
   const handlerSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    console.log('🚀 ~ AddMovie ~ title:', title);
-    console.log('🚀 ~ AddMovie ~ rating:', rating);
-    console.log('🚀 ~ AddMovie ~ genre:', genre);
-    console.log('🚀 ~ AddMovie ~ description:', description);
+    const newMovie: IMovie = {
+      title,
+      rating,
+      genre,
+      description,
+    };
+    console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
   };
 
   const handlerTitleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
