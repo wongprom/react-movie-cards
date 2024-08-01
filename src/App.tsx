@@ -4,7 +4,6 @@ import { IMovie } from './interfaces';
 import './App.css';
 
 export function App() {
-  const [_, setNewMovie] = useState<IMovie | null>(null);
   const [allMovies, setAllMovies] = useState<IMovie[] | []>([]);
 
   const addMovieToList = (movie: IMovie) => {
@@ -16,7 +15,7 @@ export function App() {
   };
   return (
     <main>
-      <AddMovie setNewMovie={setNewMovie} addMovieToList={addMovieToList} />
+      <AddMovie addMovieToList={addMovieToList} />
       <MovieList
         movies={allMovies}
         handlerRemoveMovieFromList={handlerRemoveMovieFromList}

@@ -6,11 +6,10 @@ import { IMovie } from '../interfaces';
 import './AddMovie.css';
 
 interface IAddMovieProps {
-  setNewMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
   addMovieToList: (newMovie: IMovie) => void;
 }
 
-export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
+export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
   const [errorText, setErrorText] = useState({
     title: '',
     genre: '',
@@ -34,7 +33,6 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
       id: id4,
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
-    setNewMovie(newMovie);
     addMovieToList(newMovie);
     handlerFormReset();
   };
