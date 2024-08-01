@@ -1,8 +1,16 @@
 # My Solution
 
 <div style="text-align: center">
+  <figcaption>Inspiration</figcaption>
+  <img src="./src/assets/myImages/inspiration-form-design.png" style="padding: 1rem; width: 400px">
+</div>
+<div style="text-align: center">
   <figcaption>Small Screen</figcaption>
   <img src="./src/assets/myImages/small-screen.png" style="padding: 1rem; width: 400px">
+</div>
+<div style="text-align: center">
+  <figcaption>Validation & Disabled Button</figcaption>
+  <img src="./src/assets/myImages/error-disabled.png" style="padding: 1rem; width: 400px">
 </div>
 <div style="text-align: center">
   <figcaption>Medium Screen</figcaption>
