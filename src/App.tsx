@@ -5,10 +5,15 @@ import './App.css';
 
 export function App() {
   const [newMovie, setNewMovie] = useState<IMovie | null>(null);
+  const [allMovies, setAllMovies] = useState<IMovie[] | []>([]);
+
+  const addMovieToList = (movie: IMovie) => {
+    setAllMovies([...allMovies, movie]);
+  };
   return (
     <main>
-      <AddMovie setNewMovie={setNewMovie} />
-      {newMovie && <MovieCard movie={newMovie} />}
+      <AddMovie setNewMovie={setNewMovie} addMovieToList={addMovieToList} />
+      {allMovies && allMovies.map((movie) => <MovieCard movie={movie} />)}
     </main>
   );
 }

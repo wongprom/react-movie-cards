@@ -3,9 +3,10 @@ import { IMovie } from '../interfaces';
 
 interface IAddMovieProps {
   setNewMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
+  addMovieToList: (newMovie: IMovie) => void;
 }
 
-export const AddMovie = ({ setNewMovie }: IAddMovieProps) => {
+export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
   const [title, setTitle] = useState<string>('');
   const [rating, setRating] = useState<string>('');
   const [genre, setGenre] = useState<string>('');
@@ -21,6 +22,8 @@ export const AddMovie = ({ setNewMovie }: IAddMovieProps) => {
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
     setNewMovie(newMovie);
+
+    addMovieToList(newMovie);
     handlerFormReset();
   };
 
