@@ -9,21 +9,20 @@ interface IAddMovieProps {
 }
 
 export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
-  const [title, setTitle] = useState<string>('');
-  const [rating, setRating] = useState<string>('');
-  const [genre, setGenre] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const [formData, setFormData] = useState({
+    title: '',
+    rating: '3',
+    genre: '',
+    description: '',
+  });
 
   const id4 = uuidv4();
 
   const handlerSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const newMovie: IMovie = {
+      ...formData,
       id: id4,
-      title,
-      rating,
-      genre,
-      description,
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
     setNewMovie(newMovie);
@@ -31,33 +30,23 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
     handlerFormReset();
   };
 
-  const handlerTitleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault();
-    setTitle(e.target.value);
-  };
-
-  const handlerRatingInput: ChangeEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault();
-    setRating(e.target.value);
-  };
-
-  const handlerGenreSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    e.preventDefault();
-    setGenre(e.target.value);
-  };
-
-  const handlerDescriptionTextarea: ChangeEventHandler<HTMLTextAreaElement> = (
-    e
-  ) => {
-    e.preventDefault();
-    setDescription(e.target.value);
+  const handlerInputChange: ChangeEventHandler<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  > = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   const handlerFormReset = () => {
-    setTitle('');
-    setRating('');
-    setGenre('');
-    setDescription('');
+    setFormData(() => ({
+      title: '',
+      rating: '3',
+      genre: '',
+      description: '',
+    }));
   };
 
   return (
@@ -70,8 +59,8 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
           <input
             id={'title'}
             name={'title'}
-            value={title}
-            onChange={handlerTitleInput}
+            value={formData.title}
+            onChange={handlerInputChange}
             type={'text'}
           />
         </div>
@@ -81,8 +70,8 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
           <input
             id={'rating'}
             name={'rating'}
-            value={rating}
-            onChange={handlerRatingInput}
+            value={formData.rating}
+            onChange={handlerInputChange}
             min={'0'}
             max={'5'}
             step="1"
@@ -100,8 +89,8 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
           <select
             id="genre"
             name="genre"
-            value={genre}
-            onChange={handlerGenreSelect}
+            value={formData.genre}
+            onChange={handlerInputChange}
           >
             <option value={''}>Choose a genre ...</option>
             <option value="drama">Drama</option>
@@ -117,8 +106,8 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            value={description}
-            onChange={handlerDescriptionTextarea}
+            value={formData.description}
+            onChange={handlerInputChange}
             name="description"
             rows={10}
             cols={40}
