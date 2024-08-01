@@ -150,14 +150,14 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
             onChange={handlerInputChange}
           >
             <option value={''}>Choose a genre ...</option>
-            <option value="drama">Drama</option>
-            <option value="horror">Horror</option>
-            <option value="thriller">Thriller</option>
-            <option value="action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="western">Western</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Western">Western</option>
           </select>
-          <span style={{ color: 'red' }}>{errorText.genre}</span>
+          <span className="error-color-red">{errorText.genre}</span>
         </div>
         {/* Description */}
         <div className="description-wrapper">
