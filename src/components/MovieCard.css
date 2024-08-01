@@ -8,6 +8,9 @@ li {
   padding: 1rem;
   border-radius: 20px;
 }
+li:hover {
+  cursor: pointer;
+}
 .row-one {
   display: flex;
   justify-content: space-between;
