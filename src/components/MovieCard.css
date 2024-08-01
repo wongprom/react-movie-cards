@@ -1,0 +1,28 @@
+li {
+  list-style: none;
+  border: 1px solid black;
+  min-width: 350px;
+  max-width: 350px;
+  background-color: #01204e;
+  color: whitesmoke;
+  padding: 1rem;
+  border-radius: 20px;
+}
+.row-one {
+  display: flex;
+  justify-content: space-between;
+}
+.row-two {
+  display: flex;
+  justify-content: flex-end;
+}
+.row-three {
+  display: flex;
+}
+.row-three p {
+  margin: 0;
+}
+
+.font-bold {
+  font-weight: bold;
+}

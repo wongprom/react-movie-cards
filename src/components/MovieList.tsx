@@ -1,6 +1,6 @@
 import { MovieCard } from '.';
 import { IMovie } from '../interfaces';
-
+import './MovieList.css';
 interface IMovieListProps {
   movies: IMovie[] | [];
   handlerRemoveMovieFromList: (movieId: string) => void;
@@ -11,7 +11,7 @@ export const MovieList = ({
   handlerRemoveMovieFromList,
 }: IMovieListProps) => {
   return (
-    <div>
+    <div className="movie-list">
       <h2>List Of Movie Cards</h2>
       <ul>
         {movies.length > 0 &&
