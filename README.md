@@ -1,3 +1,18 @@
+# My Solution
+
+<div style="text-align: center">
+  <figcaption>Small Screen</figcaption>
+  <img src="./src/assets/myImages/small-screen.png" style="padding: 1rem; width: 400px">
+</div>
+<div style="text-align: center">
+  <figcaption>Medium Screen</figcaption>
+  <img src="./src/assets/myImages/medium-screen.png" style="padding: 1rem; width: 400px">
+</div>
+<div style="text-align: center">
+  <figcaption>Big Screen</figcaption>
+  <img src="./src/assets/myImages/big-screen.png" style="padding: 1rem; width: 400px">
+</div>
+
 # Movie Cards
 
 You are going to create a webpage where you can add movie cards. This will be done through a form, where the user can type in a title, rating, genre and a description.
