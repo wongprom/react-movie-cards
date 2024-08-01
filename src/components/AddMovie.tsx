@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { IMovie } from '../interfaces';
 
@@ -12,9 +14,12 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
   const [genre, setGenre] = useState<string>('');
   const [description, setDescription] = useState<string>('');
 
+  const id4 = uuidv4();
+
   const handlerSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const newMovie: IMovie = {
+      id: id4,
       title,
       rating,
       genre,
@@ -22,7 +27,6 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
     };
     console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
     setNewMovie(newMovie);
-
     addMovieToList(newMovie);
     handlerFormReset();
   };
