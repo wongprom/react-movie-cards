@@ -2,8 +2,43 @@ form {
   display: flex;
   flex-direction: column;
   max-width: 600px;
+  background-color: #01204e;
+  border-radius: 25px;
+  color: whitesmoke;
 }
 
+input,
+select,
+textarea {
+  background-color: #f6dcac;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-radius: 20px;
+  border-color: #f6dcac;
+  margin: 1rem;
+}
+
+legend {
+  text-align: center;
+  font-weight: bolder;
+}
+
+span {
+  font-size: small;
+}
+
+/* Title */
 .title-wrapper {
   display: flex;
   flex-direction: column;
@@ -21,4 +56,45 @@ form {
 .description-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+/* Button styles */
+button {
+  padding-block: 0.4rem;
+  padding-inline: 1rem;
+  border-radius: 20px;
+  background-color: #028391;
+  border-color: whitesmoke;
+  color: whitesmoke;
+  letter-spacing: 0.2rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.submit {
+  padding-inline: 4rem;
+}
+
+.button-wrapper {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-around;
+}
+
+/* Error Styles */
+.error-color-red {
+  color: red;
+}
+
+.error-bg-red {
+  background-color: #feae6f;
+}
+
+.error-border-color-red {
+  border: 0.5px solid red;
+  border-color: red;
 }

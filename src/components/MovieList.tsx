@@ -11,21 +11,19 @@ export const MovieList = ({
   handlerRemoveMovieFromList,
 }: IMovieListProps) => {
   return (
-    <>
+    <div>
       <h2>List Of Movie Cards</h2>
       <ul>
-        {movies.length > 0 ? (
+        {movies.length > 0 &&
           movies.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
               handlerRemoveMovieFromList={handlerRemoveMovieFromList}
             />
-          ))
-        ) : (
-          <p>Add a movie to display it here </p>
-        )}
+          ))}
       </ul>
-    </>
+      {movies.length < 1 && <p>Add a movie to display it here</p>}
+    </div>
   );
 };

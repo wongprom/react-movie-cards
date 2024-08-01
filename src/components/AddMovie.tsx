@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { IMovie } from '../interfaces';
 
+import './AddMovie.css';
+
 interface IAddMovieProps {
   setNewMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
   addMovieToList: (newMovie: IMovie) => void;
@@ -87,24 +89,35 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
       description: '',
     }));
   };
-
+  console.log('errorText.title ', errorText.title.length);
   return (
     <form onSubmit={handlerSubmit}>
       <fieldset>
-        <legend>Add Movie</legend>
+        <legend>ADD MOVIE</legend>
         {/*  Title */}
         <div className="title-wrapper">
-          <label htmlFor={'title'}>Title</label>
+          <span className="error-color-red">*</span>
+          <label
+            className={`${errorText.title ? 'error-color-red' : ''}`}
+            htmlFor={'title'}
+          >
+            Title
+          </label>
           <input
+            className={`${
+              errorText.title ? 'error-bg-red error-border-color-red' : ''
+            }`}
             id={'title'}
             name={'title'}
             value={formData.title}
             onChange={handlerInputChange}
             type={'text'}
           />
-          <span style={{ color: 'red' }}>{errorText.title}</span>
+          <span className={`${errorText.title ? 'error-color-red' : ''}`}>
+            {errorText.title}
+          </span>
         </div>
-        {/* Rating 1 - 5 ⭐️⭐️⭐️☆☆ */}
+        {/* Rating 1 - 5 */}
         <div className="rating-wrapper">
           <label htmlFor={'rating'}>Rating</label>
           <input
@@ -117,16 +130,20 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
             step="1"
             type={'range'}
           />
-          {/* <div>
-            {[...Array(5)].map((_, i) => (
-              <span key={i}>⭐️</span>
-            ))}
-          </div> */}
         </div>
         {/* Genre */}
         <div className="genre-wrapper">
-          <label htmlFor="genre">Genre</label>
+          <span className="error-color-red">*</span>
+          <label
+            className={`${errorText.genre ? 'error-color-red' : ''}`}
+            htmlFor="genre"
+          >
+            Genre
+          </label>
           <select
+            className={`${
+              errorText.genre ? 'error-bg-red error-border-color-red' : ''
+            }`}
             id="genre"
             name="genre"
             value={formData.genre}
@@ -157,9 +174,9 @@ export const AddMovie = ({ setNewMovie, addMovieToList }: IAddMovieProps) => {
       </fieldset>
       {/* Clear Button */}
       {/* Add Button */}
-      <div>
+      <div className="button-wrapper">
         <button onClick={handlerFormReset}>Clear</button>
-        <button type="submit" disabled={!isFormValid}>
+        <button className="submit" type="submit" disabled={!isFormValid}>
           Add
         </button>
       </div>
