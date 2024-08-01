@@ -10,10 +10,17 @@ export function App() {
   const addMovieToList = (movie: IMovie) => {
     setAllMovies([...allMovies, movie]);
   };
+
+  const handlerRemoveMovieFromList = (movieId: string) => {
+    setAllMovies(allMovies.filter((movie) => movie.id !== movieId));
+  };
   return (
     <main>
       <AddMovie setNewMovie={setNewMovie} addMovieToList={addMovieToList} />
-      <MovieList movies={allMovies} />
+      <MovieList
+        movies={allMovies}
+        handlerRemoveMovieFromList={handlerRemoveMovieFromList}
+      />
     </main>
   );
 }
