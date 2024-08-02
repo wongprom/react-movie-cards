@@ -10,6 +10,11 @@ interface IAddMovieProps {
 }
 
 export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
+  const [starClasses, setStarClasses] = useState<string[]>(['error-color-red']);
+  const [starGenreClasses, setStarGenreClasses] = useState<string[]>([
+    'error-color-red',
+  ]);
+
   const [errorText, setErrorText] = useState({
     title: '',
     genre: '',
@@ -24,6 +29,21 @@ export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
   const id4 = uuidv4();
   const isFormValid = !!formData.genre && !!formData.title;
 
+  const isTitleInputValid = (): boolean => {
+    return formData.title.length > 0;
+  };
+  const isGenreInputValid = (): boolean => {
+    return formData.genre !== '';
+  };
+
+  const derivedTitleStarClasses = isTitleInputValid()
+    ? [...starClasses, 'valid-color-green'].join(' ')
+    : [...starClasses].join(' ');
+
+  const derivedGenreStarClasses = isGenreInputValid()
+    ? [...starGenreClasses, 'valid-color-green'].join(' ')
+    : [...starGenreClasses].join(' ');
+
   const handlerSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
@@ -32,7 +52,6 @@ export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
       ...formData,
       id: id4,
     };
-    console.log('🚀 ~ AddMovie ~ newMovie:', newMovie);
     addMovieToList(newMovie);
     handlerFormReset();
   };
@@ -72,7 +91,6 @@ export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
       default:
         break;
     }
-
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -87,14 +105,13 @@ export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
       description: '',
     }));
   };
-  console.log('errorText.title ', errorText.title.length);
   return (
     <form onSubmit={handlerSubmit}>
       <fieldset>
         <legend>ADD MOVIE</legend>
         {/*  Title */}
         <div className="title-wrapper">
-          <span className="error-color-red">*</span>
+          <span className={derivedTitleStarClasses}>*</span>
           <label
             className={`${errorText.title ? 'error-color-red' : ''}`}
             htmlFor={'title'}
@@ -131,7 +148,7 @@ export const AddMovie = ({ addMovieToList }: IAddMovieProps) => {
         </div>
         {/* Genre */}
         <div className="genre-wrapper">
-          <span className="error-color-red">*</span>
+          <span className={derivedGenreStarClasses}>*</span>
           <label
             className={`${errorText.genre ? 'error-color-red' : ''}`}
             htmlFor="genre"

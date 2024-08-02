@@ -38,21 +38,9 @@ span {
   font-size: small;
 }
 
-/* Title */
-.title-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.rating-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.genre-wrapper {
-  display: flex;
-  flex-direction: column;
-}
+.title-wrapper,
+.rating-wrapper,
+.genre-wrapper,
 .description-wrapper {
   display: flex;
   flex-direction: column;
@@ -85,7 +73,7 @@ button:disabled {
   justify-content: space-around;
 }
 
-/* Error Styles */
+/* Error & Valid Styles */
 .error-color-red {
   color: red;
 }
@@ -97,4 +85,8 @@ button:disabled {
 .error-border-color-red {
   border: 0.5px solid red;
   border-color: red;
+}
+
+.valid-color-green {
+  color: green;
 }
